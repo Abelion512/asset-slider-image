@@ -1,0 +1,363 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost:wght@400;700&display=swap");
+
+* {
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+}
+.slider-container{
+  width: 100%;
+  height: 100vh;
+  background-image: url('Images/bg.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+.slider-images{
+  display: flex;
+  align-items: center;
+  gap: 21px;
+}
+.slider-images img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 6px;
+}
+.slider-img{
+  width: 110px;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.slider-img:hover:not(.active) {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+.slider-images .slider-img:first-child, .slider-images .slider-img:last-child{
+  height: 480px;
+}
+.slider-images .slider-img:nth-child(2), .slider-images .slider-img:nth-child(6){
+  height: 560px;
+}
+.slider-images .slider-img:nth-child(3), .slider-images .slider-img:nth-child(4), .slider-images .slider-img:nth-child(5){
+  height: 665px;
+}
+h1{
+  font-family: "Jost", sans-serif;
+  font-size: 40px;
+  font-weight: 700;
+  text-align: left;
+  text-transform: uppercase;
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: -10%;
+  transform: rotate(270deg);
+  transition: 0.7s ease;
+}
+.details{
+  position: absolute;
+  bottom: 43px;
+  left: 43px;
+  width: 80%;
+}
+
+.details .category {
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  background: linear-gradient(45deg, #fff, #70a1ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 10px;
+  transform: translateX(-30px);
+  opacity: 0;
+  display: none;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  text-shadow: none;
+  position: relative;
+}
+
+@keyframes categoryPulse {
+  0% { letter-spacing: 3px; }
+  50% { letter-spacing: 5px; }
+  100% { letter-spacing: 3px; }
+}
+
+.details .category::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(90deg, #70a1ff, transparent);
+  transition: width 0.7s ease;
+}
+
+.details h2{
+  font-family: "Jost", sans-serif;
+  font-size: 42px;
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.2;
+  background: linear-gradient(90deg, #fff, #70a1ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-transform: uppercase;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(50px) scale(0.95);
+  opacity: 0;
+  display: none;
+  text-shadow: none;
+  position: relative;
+}
+
+@keyframes titleFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-5px); }
+}
+
+.details h2::after {
+  content: '';
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 50px;
+  height: 3px;
+  background: linear-gradient(90deg, #70a1ff, transparent);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.details .subtitle{
+  font-family: "Jost", sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  text-align: left;
+  line-height: 1.4;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(50px) scale(0.95);
+  opacity: 0;
+  display: none;
+  margin-bottom: 15px;
+  position: relative;
+  text-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+}
+
+@keyframes subtitleReveal {
+  0% { clip-path: inset(0 100% 0 0); }
+  100% { clip-path: inset(0 0 0 0); }
+}
+
+.details .subtitle span {
+  opacity: 0;
+  display: inline-block;
+  animation: fadeInChars 0.5s forwards;
+  animation-delay: calc(var(--char-index) * 0.1s);
+}
+
+.details .description {
+  font-family: "Jost", sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.9);
+  transform: translateY(30px);
+  opacity: 0;
+  display: none;
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  max-width: 400px;
+  margin-bottom: 20px;
+  position: relative;
+  padding-left: 20px;
+  border-left: 2px solid rgba(112, 161, 255, 0.3);
+}
+
+@keyframes descriptionHighlight {
+  0% { background-position: -100% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.details .description::before {
+  content: '';
+  position: absolute;
+  left: -2px;
+  top: 0;
+  width: 2px;
+  height: 0;
+  background: linear-gradient(to bottom, #70a1ff, transparent);
+  transition: height 1s ease;
+}
+
+.details .stats {
+  display: none;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  padding: 15px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 8px;
+  backdrop-filter: blur(10px);
+  overflow: hidden;
+}
+
+@keyframes statsShine {
+  0% { transform: translateX(-100%) rotate(45deg); }
+  100% { transform: translateX(200%) rotate(45deg); }
+}
+
+.details .stats::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 100%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: translateX(-100%) rotate(45deg);
+}
+
+.details .stats span {
+  display: block;
+  font-family: "Jost", sans-serif;
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.8);
+  line-height: 1.4;
+  transition: transform 0.3s ease;
+}
+
+.details .stats span:first-child {
+  font-size: 24px;
+  font-weight: 700;
+  color: #fff;
+  background: linear-gradient(90deg, #fff, #70a1ff);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.slider-img.active{
+  width: 766px !important;
+  height: 750px !important;
+  transform: scale(1.02);
+}
+
+.slider-img:not(.active) {
+  filter: brightness(0.8);
+}
+
+.slider-img.active h1{
+   opacity: 0;
+   transform: translateX(-100px);
+}
+
+.slider-img.active .details .category,
+.slider-img.active .details h2,
+.slider-img.active .details .subtitle,
+.slider-img.active .details .description,
+.slider-img.active .details .stats {
+  display: block;
+  opacity: 1;
+  transform: translateX(0) translateY(0) scale(1);
+}
+
+.slider-img.active .details .category {
+  transition-delay: 0.2s;
+  animation: categoryPulse 3s infinite ease-in-out;
+}
+
+.slider-img.active .details .category::after {
+  width: 100%;
+  transition-delay: 0.7s;
+}
+
+.slider-img.active .details h2 {
+  transition-delay: 0.4s;
+  animation: titleFloat 3s infinite ease-in-out;
+}
+
+.slider-img.active .details h2::after {
+  transform: scaleX(1);
+  transition-delay: 0.9s;
+}
+
+.slider-img.active .details .subtitle {
+  transition-delay: 0.6s;
+  animation: subtitleReveal 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.slider-img.active .details .description {
+  transition-delay: 0.8s;
+}
+
+.slider-img.active .details .description::before {
+  height: 100%;
+  transition-delay: 1.2s;
+}
+
+.slider-img.active .details .stats {
+  transition-delay: 1s;
+}
+
+.slider-img.active .details .stats::before {
+  animation: statsShine 3s infinite;
+  animation-delay: 1.5s;
+}
+
+/* Hover animations for active slide */
+.slider-img.active:hover .details .category {
+  letter-spacing: 5px;
+}
+
+.slider-img.active:hover .details h2 {
+  transform: translateY(-3px);
+  background-position: 100%;
+}
+
+.slider-img.active:hover .details .stats span {
+  transform: translateX(5px);
+}
+
+/* Add some keyframe animations */
+@keyframes fadeInChars {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes glowText {
+  0%, 100% { text-shadow: 0 0 15px rgba(255, 255, 255, 0.3); }
+  50% { text-shadow: 0 0 25px rgba(255, 255, 255, 0.5); }
+}
+
+/* Add hover effect for active slide */
+.slider-img.active:hover .details .category,
+.slider-img.active:hover .details h2,
+.slider-img.active:hover .details .subtitle,
+.slider-img.active:hover .details .description,
+.slider-img.active:hover .details .stats {
+  transform: translateX(10px);
+}

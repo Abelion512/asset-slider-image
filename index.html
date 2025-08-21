@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Image Slider</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <section class="slider-container">
+      <div class="slider-images">
+
+           <div class="slider-img">
+          <img src="Images/2.jpg" alt="2" />
+          <h1>Jupiter</h1>
+          <div class="details">
+            <span class="category">Planet 02</span>
+            <h2>Jupiter</h2>
+            <p class="subtitle">The Giant King</p>
+            <p class="description">The largest planet in our solar system, Jupiter is a gas giant with powerful storms.</p>
+            <div class="stats">
+              <span>483.8M miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="slider-img">
+          <img src="Images/5.jpg" alt="1" />
+          <h1>Mercury</h1>
+          <div class="details">
+            <span class="category">Planet 01</span>
+            <h2>Mercury</h2>
+            <p class="subtitle">The Swift Messenger</p>
+            <p class="description">The smallest and fastest planet in our solar system, Mercury orbits closest to the Sun.</p>
+            <div class="stats">
+              <span>36.75M miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>
+     
+        <div class="slider-img">
+          <img src="Images/3.jpg" alt="3" />
+          <h1>Venus</h1>
+          <div class="details">
+            <span class="category">Planet 03</span>
+            <h2>Venus</h2>
+            <p class="subtitle">The Morning Star</p>
+            <p class="description">Earth's sister planet Venus is the hottest planet, with a thick atmosphere of carbon dioxide.</p>
+            <div class="stats">
+              <span>67.24M miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>
+        <div class="slider-img active">
+          <img src="Images/4.jpg" alt="4" />
+          <h1>Uranus</h1>
+          <div class="details">
+            <span class="category">Planet 04</span>
+            <h2>Uranus</h2>
+            <p class="subtitle">The Sideways Ice Giant</p>
+            <p class="description">Unique among planets, Uranus rotates on its side and has a tilted magnetic field.</p>
+            <div class="stats">
+              <span>1.8B miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>
+        <div class="slider-img">
+          <img src="Images/1.jpg" alt="5" />
+          <h1>Mars</h1>
+          <div class="details">
+            <span class="category">Planet 05</span>
+            <h2>Mars</h2>
+            <p class="subtitle">The Red Warrior</p>
+            <p class="description">The red planet Mars has captivated humans for millennia, with its potential for past or present life.</p>
+            <div class="stats">
+              <span>141.6M miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>
+        <div class="slider-img">
+          <img src="Images/6.jpg" alt="6" />
+          <h1>Saturn</h1>
+          <div class="details">
+            <span class="category">Planet 06</span>
+            <h2>Saturn</h2>
+            <p class="subtitle">The Ringed Jewel</p>
+            <p class="description">Famous for its stunning rings, Saturn is a gas giant with complex moon systems and incredible beauty.</p>
+            <div class="stats">
+              <span>886.7M miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>
+        <div class="slider-img">
+          <img src="Images/7.jpg" alt="7" />
+          <h1>Earth</h1>
+          <div class="details">
+            <span class="category">Planet 07</span>
+            <h2>Earth</h2>
+            <p class="subtitle">The Blue Marble</p>
+            <p class="description">Our home planet Earth is the only known world to support life, with its perfect conditions for liquid water.</p>
+            <div class="stats">
+              <span>93M miles</span>
+              <span>from Sun</span>
+            </div>
+          </div>
+        </div>     
+      </div>
+    </section>
+    <script src="js/jQuery.js"></script>
+    <script>
+      jQuery(document).ready(function ($) {
+        // Split subtitle text into characters
+        $('.subtitle').each(function() {
+          let text = $(this).text();
+          let chars = text.split('');
+          $(this).empty();
+          chars.forEach((char, index) => {
+            $(this).append(`<span style="--char-index: ${index}">${char}</span>`);
+          });
+        });
+
+        $(".slider-img").on("click", function () {
+          $(".slider-img").removeClass("active");
+          $(this).addClass("active");
+        });
+      });
+    </script>
+  </body>
+</html>
